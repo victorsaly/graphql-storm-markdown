@@ -1,5 +1,6 @@
 'use strict'
 const fs = require('fs')
+const https = require('https')
 const fetch = require('node-fetch')
 const graphql = require('graphql')
 const resolveFrom = require('resolve-from')
@@ -37,6 +38,10 @@ function fetchSchemaJSON(url, options) {
       'Content-Type': 'application/json',
       ...options.headers
     },
+    // Add The Below
+    agent: new https.Agent({
+      rejectUnauthorized: false
+    }),
     body: JSON.stringify({ query: graphql.getIntrospectionQuery() })
   })
     .then(res => res.json())
