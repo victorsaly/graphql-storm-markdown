@@ -1,21 +1,23 @@
 <div align="center">
 
-# graphql-markdown
+# graphql-storm-markdown
 
 **The easiest way to document your GraphQL schema.**
 
-[![npm version](https://img.shields.io/npm/v/graphql-markdown.svg)](https://www.npmjs.com/package/graphql-markdown)
+[![npm version](https://img.shields.io/npm/v/graphql-storm-markdown.svg)](https://www.npmjs.com/package/graphql-storm-markdown)
 
 </div>
 
+> Note: this is a clone of graphql-markdown but adapted due to changes needed in the output template.
+ 
 ---
 
 This package will generate Markdown that beautifully renders your GraphQL schema
 in an easily explorable document.
 
 ```console
-$ yarn add graphql-markdown --dev
-$ npm install graphql-markdown --save-dev
+$ yarn add graphql-storm-markdown --dev
+$ npm install graphql-storm-markdown --save-dev
 ```
 
 **[See an example][example]** generated from the [GraphBrainz][] schema.
@@ -24,7 +26,7 @@ $ npm install graphql-markdown --save-dev
 
 ### Command Line API
 
-Installing the package adds a `graphql-markdown` script. Point it at a schema
+Installing the package adds a `graphql-storm-markdown` script. Point it at a schema
 and the output will be written to stdout. You must install `graphql` alongside
 this package according to the
 [compatible versions specified in `peerDependencies`](./package.json).
@@ -32,30 +34,30 @@ this package according to the
 The schema may be retrieved from a GraphQL endpoint:
 
 ```console
-$ graphql-markdown http://your-server.com/graphql > schema.md
+$ graphql-storm-markdown http://your-server.com/graphql > schema.md
 ```
 
 …or a module exporting an instance of `GraphQLSchema`:
 
 ```console
-$ graphql-markdown ./path/to/schema.js > schema.md
+$ graphql-storm-markdown ./path/to/schema.js > schema.md
 ```
 
 …or a file containing GraphQL syntax:
 
 ```console
-$ graphql-markdown ./path/to/schema.graphql > schema.md
+$ graphql-storm-markdown ./path/to/schema.graphql > schema.md
 ```
 
 …or a file containing the JSON output of an introspection query:
 
 ```console
-$ graphql-markdown ./path/to/schema.json > schema.md
+$ graphql-storm-markdown ./path/to/schema.json > schema.md
 ```
 
 If `--update-file` is given, the generated Markdown will be output to the given
-file between the `<!-- START graphql-markdown -->` and
-`<!-- END graphql-markdown -->` comment markers instead of printed to STDOUT. If
+file between the `<!-- START graphql-storm-markdown -->` and
+`<!-- END graphql-storm-markdown -->` comment markers instead of printed to STDOUT. If
 the file does not exist, it will be created (and will include the comment
 markers for future updates). Use this if you’d like to embed the rendered
 Markdown as just one part of a larger document (see also the `--heading-level`
@@ -64,9 +66,9 @@ option).
 #### Options
 
 ```console
-$ graphql-markdown --help
+$ graphql-storm-markdown --help
 
-Usage: graphql-markdown [options] <schema>
+Usage: graphql-storm-markdown [options] <schema>
 
 Output a Markdown document with rendered descriptions and links between types.
 The schema may be specified as:
@@ -97,7 +99,7 @@ Options:
 
 ### Node API
 
-The following functions are exported from the `graphql-markdown` module for
+The following functions are exported from the `graphql-storm-markdown` module for
 programmatic use.
 
 #### loadSchemaJSON(schemaPath: string, options: object)
@@ -133,7 +135,7 @@ with a `__schema` property), render the schema to the console or the provided
 
 Given a path to a Markdown document, inject the output of `renderSchema` (with
 the given schema and options) into the document between the comment markers
-`<!-- START graphql-markdown -->` and `<!-- END graphql-markdown -->`. Returns a
+`<!-- START graphql-storm-markdown -->` and `<!-- END graphql-storm-markdown -->`. Returns a
 Promise.
 
 If the file does not exist, it will be created. If the document is empty, the
@@ -159,5 +161,3 @@ Output is optimized for display on GitHub, using GitHub Flavored Markdown. Due
 to the complexity of the tables in the generated document, much of the table
 output is raw HTML (as allowed by Markdown).
 
-[example]: https://github.com/exogen/graphbrainz/blob/master/docs/types.md
-[graphbrainz]: https://github.com/exogen/graphbrainz
